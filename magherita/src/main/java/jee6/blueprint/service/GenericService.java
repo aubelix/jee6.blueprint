@@ -8,7 +8,7 @@ import javax.persistence.TypedQuery;
 import javax.ws.rs.core.Response.Status;
 
 import jee6.blueprint.bundle.BundleKey;
-import jee6.blueprint.exception.MagException;
+import jee6.blueprint.exception.AppException;
 
 public abstract class GenericService {
 	@PersistenceContext(unitName = "magherita")
@@ -26,13 +26,13 @@ public abstract class GenericService {
 
 	public <T> T getEntity(Class<T> clazz, Object id, BundleKey bundleKey) {
 		if (undefined.equals(id)) {
-			throw new MagException(bundleKey, Status.NOT_FOUND,
+			throw new AppException(bundleKey, Status.NOT_FOUND,
 					id);
 		}
 
 		T entity = findEntity(clazz, id);
 		if (entity == null) {
-			throw new MagException(bundleKey, Status.NOT_FOUND,
+			throw new AppException(bundleKey, Status.NOT_FOUND,
 					id);
 		}
 

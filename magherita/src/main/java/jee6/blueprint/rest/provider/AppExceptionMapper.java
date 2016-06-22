@@ -15,10 +15,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import jee6.blueprint.dto.ResponseDTO;
-import jee6.blueprint.exception.MagException;
+import jee6.blueprint.exception.AppException;
 
 @Provider
-public class MagExceptionMapper implements ExceptionMapper<MagException> {
+public class MagExceptionMapper implements ExceptionMapper<AppException> {
 
     @Context
     private HttpHeaders headers;
@@ -29,7 +29,7 @@ public class MagExceptionMapper implements ExceptionMapper<MagException> {
 	private HttpServletRequest httpRequest;
     
 	@Override
-	public Response toResponse(MagException exception) {
+	public Response toResponse(AppException exception) {
 		log.error(exception.getTechnicalMessage(), exception);
 		
 		Status status = exception.getStatus();

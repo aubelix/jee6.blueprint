@@ -17,7 +17,7 @@ import jee6.blueprint.bundle.MagheritaBundle;
  * 
  */
 @ApplicationException(rollback = true)
-public class MagException extends RuntimeException {
+public class AppException extends RuntimeException {
 	private static final long serialVersionUID = 767743867836452484L;
 
 	protected static final Status DEFAULT_STATUS = Status.BAD_REQUEST;
@@ -27,28 +27,28 @@ public class MagException extends RuntimeException {
 	protected Object parameter1;
 	protected Object parameter2;
 
-	public MagException(BundleKey errorCode, Response.Status status,
+	public AppException(BundleKey errorCode, Response.Status status,
 			Object parameter1) {
 		this(errorCode.toString(), status, parameter1, null);
 	}
 
-	public MagException(BundleKey errorCode, Object param1, Object param2) {
+	public AppException(BundleKey errorCode, Object param1, Object param2) {
 		this(errorCode.toString(), DEFAULT_STATUS, param1, param2);
 	}
 
-	public MagException(BundleKey errorCode, Object param1) {
+	public AppException(BundleKey errorCode, Object param1) {
 		this(errorCode.toString(), DEFAULT_STATUS, param1, null);
 	}
 
-	public MagException(BundleKey errorCode, Response.Status status) {
+	public AppException(BundleKey errorCode, Response.Status status) {
 		this(errorCode.toString(), status, null, null);
 	}
 
-	public MagException(BundleKey errorCode) {
+	public AppException(BundleKey errorCode) {
 		this(errorCode.toString(), DEFAULT_STATUS, null, null);
 	}
 	
-	private MagException(String errorCode, Response.Status status,
+	private AppException(String errorCode, Response.Status status,
 			Object parameter1, Object parameter2) {
 		super(errorCode);
 		
