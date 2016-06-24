@@ -10,9 +10,9 @@ import javax.validation.ConstraintViolation;
 
 import jee6.blueprint.dto.ResponseDTO;
 
-public class MagheritaBundle {
+public class TextBundle {
 	public static final String BUNDLE_NAME = "msg_bundle";
-	public static final MagheritaBundle INSTANCE = new MagheritaBundle();
+	public static final TextBundle INSTANCE = new TextBundle();
 	
 	public ResourceBundle getBundle(Locale locale) {
 		if (locale == null) {

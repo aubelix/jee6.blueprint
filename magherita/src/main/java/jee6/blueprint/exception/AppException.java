@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import jee6.blueprint.bundle.BundleKey;
-import jee6.blueprint.bundle.MagheritaBundle;
+import jee6.blueprint.bundle.TextBundle;
 
 /**
  * Should be thrown when Error Message will be translated and sent back to the
@@ -71,7 +71,7 @@ public class AppException extends RuntimeException {
 	}
 
 	public String getLocalizedMessage(Locale lang) {
-		return MagheritaBundle.INSTANCE.getText(lang, errorCode, parameter1, parameter2);
+		return TextBundle.INSTANCE.getText(lang, errorCode, parameter1, parameter2);
 	}
 
 	public String getErrorCode() {

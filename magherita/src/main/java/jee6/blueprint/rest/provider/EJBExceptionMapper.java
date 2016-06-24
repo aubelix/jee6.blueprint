@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import jee6.blueprint.bundle.BundleKey;
-import jee6.blueprint.bundle.MagheritaBundle;
+import jee6.blueprint.bundle.TextBundle;
 import jee6.blueprint.dto.ResponseDTO;
 import jee6.blueprint.exception.ExceptionUtil;
 
@@ -50,7 +50,7 @@ public class EJBExceptionMapper implements ExceptionMapper<EJBException> {
 			ConstraintViolationException ce = (ConstraintViolationException) ex;
 
 			Set<ConstraintViolation<?>> constraintViolations = ce.getConstraintViolations();
-			ResponseDTO entity = MagheritaBundle.INSTANCE.getTexts(locale, constraintViolations);
+			ResponseDTO entity = TextBundle.INSTANCE.getTexts(locale, constraintViolations);
 			Status status = Status.BAD_REQUEST;
 
 			return Response.status(status).entity(entity).build();
@@ -75,7 +75,7 @@ public class EJBExceptionMapper implements ExceptionMapper<EJBException> {
 			errorCode = BundleKey.INTERNAL_ERROR;
 		}
 
-		String errorMsg = MagheritaBundle.INSTANCE.getText(locale, errorCode);
+		String errorMsg = TextBundle.INSTANCE.getText(locale, errorCode);
 		if (ProviderUtil.isSupportingXmlJson(headers)) {
 			String errorCodeString = toNullableString(errorCode);
 			entity = new ResponseDTO(errorCodeString, errorMsg);

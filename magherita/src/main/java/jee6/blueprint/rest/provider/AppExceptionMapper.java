@@ -18,12 +18,12 @@ import jee6.blueprint.dto.ResponseDTO;
 import jee6.blueprint.exception.AppException;
 
 @Provider
-public class MagExceptionMapper implements ExceptionMapper<AppException> {
+public class AppExceptionMapper implements ExceptionMapper<AppException> {
 
     @Context
     private HttpHeaders headers;
     
-    private Logger log = LoggerFactory.getLogger(MagExceptionMapper.class);
+    private Logger log = LoggerFactory.getLogger(AppExceptionMapper.class);
     
     @Context
 	private HttpServletRequest httpRequest;
